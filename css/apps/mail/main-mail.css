@@ -1,8 +1,12 @@
-*{
-    box-sizing: border-box;
-}
-body{
-    margin: 0;
-    padding: 0;
-    background-color: bisque;
-}
+
+
+/*  PARTS */
+@import '../mail/parts/helpers.css';
+@import '../mail/parts/fonts.css';
+@import '../mail/parts/base.css';
+
+
+/*  COMPONENTS  */
+@import '../mail/cmps/app-home.css';
+@import '../mail/cmps/mail-list.css';
+@import '../mail/cmps/mail-preview.css';

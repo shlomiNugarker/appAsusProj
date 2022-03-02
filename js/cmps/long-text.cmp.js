@@ -1,7 +1,7 @@
 import { eventBus } from '../services/eventBus-service.js';
 
 export default {
-    props: ['txt'],
+    // props: ['txt'],
     template: `
         <section class="long-text">
             <p>{{displayTxt}} </p>
@@ -10,7 +10,9 @@ export default {
     `,
     data() {
         return {
-            isLongMode: false
+            isLongMode: false,
+            txt: ''
+
         }
     },
     created(){
