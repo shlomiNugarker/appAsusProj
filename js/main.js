@@ -1,6 +1,7 @@
 import { router } from './routers.js'
 import appHeader from './cmps/app-header.cmp.js'
 import userMsg from './cmps/user-msg.cmp.js'
+import longText from './cmps/long-text.cmp.js'
 
 
 
@@ -10,6 +11,7 @@ const options = {
             <app-header/>
             <user-msg />
             <router-view/>
+            <long-text/>
             <!-- <app-footer/> -->
         </section>
     
@@ -17,7 +19,8 @@ const options = {
     components:{
         appHeader,
         // appFooter,
-        userMsg
+        userMsg,
+        longText
     }
 }
 
