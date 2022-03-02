@@ -1,0 +1,38 @@
+.mail-list{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    min-height: 50vh;
+    flex-direction: row;
+}
+.mail-list table {
+    width: 80vw;
+    display: flex;
+    
+}
+
+.mail-list .compos {
+    background-color: cadetblue;
+    width: 20vw;
+}
+.mail-list .compos button{
+    display: block;
+    width: 20vw;
+}
+
+table .row{
+    background-color: rgb(206, 206, 206);
+    height: 30px;
+    
+}
+.container-row{
+    width: 80vw;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+tbody{
+    width: 80vw;
+}
+.title{
+    width: 20vw;
+}

@@ -10,7 +10,7 @@ export default {
             <h1>mail index box</h1>
             <mail-filter></mail-filter>
             <mail-list :mails="listToShow"></mail-list>
-            {{ mails }}
+
         </section>
     `,
   components: {
@@ -26,7 +26,7 @@ export default {
     return {
       mails: null,
       filterBy: null,
-      
+
     }
   },
   methods: {},

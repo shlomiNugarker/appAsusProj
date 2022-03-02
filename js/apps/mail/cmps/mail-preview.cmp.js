@@ -1,13 +1,24 @@
 export default {
-  // props: [""],
+  props: ["mail"],
   template: `
         <section>
-            <h1>mail-preview</h1>
+        <router-link :to="'/mailBox/'+mail.id">
+          <div class="container-row">
+              <span class="title"> {{ mail.subject }} </span>
+              <span>{{ mail.body }}</span>  
+          </div>
+          </router-link>
+
         </section>
+
     `,
   components: {},
-  created() {},
-  mount() {},
+  created() {
+  
+  },
+  mount() {
+    // console.log(this.mail);
+  },
   data() {
     return {}
   },

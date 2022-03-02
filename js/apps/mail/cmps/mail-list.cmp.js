@@ -4,12 +4,27 @@ import mailPreview from '../cmps/mail-preview.cmp.js'
 export default {
   props: ["mails"],
   template: `
-        <section>
-          <!-- <h1>mail-list</h1>
-          <mail-preview></mail-preview> -->
+        <section class="mail-list">
+          <div class="compos">
+            <button>New email</button>
+            
+            <p>email</p>
+            <button>Inbox</button>
+            <button>starred</button>
+            <button>sent mail</button>
+            <button>Draft</button>      
 
-        <input type="text" v-model="txt">
-        <button @click="getNote">button</button>
+          </div>
+          
+          <table>
+            <tbody class="">
+              <tr class="row" v-for="mail in mails" :key="mail.id">
+                <mail-preview :mail="mail"></mail-preview>
+              </tr>
+            </tbody>
+          </table>
+
+          
 
           
         </section>
@@ -23,27 +38,14 @@ export default {
   },
   data() {
     return {
-      type: "note-txt",
-      isPinned: true,
-
-      txt: "Fullstack Me Baby!"
+  
 
     }
-         
-     
-   
   },
   methods: {
-    getNote(){
-      console.log(this.txt);
-      this.txt = ''
-    }
+
   },
   computed: {
-    getName(){
-      // const regex = new RegExp([^@]+)
-    },
-   
     
   },
   watch: {},
