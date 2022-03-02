@@ -1,0 +1,8 @@
+.note-list-layout{
+    column-count: 3;
+    column-gap: 10px;
+    width: 80vw;
+    height: 50vh;
+    /* background-color: red; */
+    margin: auto;
+}

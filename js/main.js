@@ -11,12 +11,12 @@ const options = {
             <app-header/>
             <user-msg />
             <router-view/>
-            <long-text/>
+            <!-- <long-text/> -->
             <!-- <app-footer/> -->
         </section>
     
     `,
-    components:{
+    components: {
         appHeader,
         // appFooter,
         userMsg,

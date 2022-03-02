@@ -1,8 +1,10 @@
-*{
-    box-sizing: border-box;
-}
-body{
-    margin: 0;
-    padding: 0;
-    background-color: bisque;
-}
+/* parts */
+@import './parts/fonts.css';
+@import './parts/base.css';
+@import './parts/helpers.css';
+@import'./parts/layouts.css';
+
+/* cmps */
+@import './cmps/app-home.css';
+@import'./cmps/note-list.css';
+@import './cmps/note-preview.css';
