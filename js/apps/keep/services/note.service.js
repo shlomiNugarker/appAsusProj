@@ -4,7 +4,8 @@ import { storageService } from '../../../services/async-storage-service.js'
 const STORAGE_KEY = 'notesDB'
 export const noteService = {
     query,
-    saveNote
+    saveNote,
+    getNoteType
 }
 
 function query() {
@@ -61,7 +62,7 @@ function getNoteType(notetype) {
             type: "note-txt",
             isPinned: false,
             info: {
-                txt: "Fullstack Me Baby!"
+                txt: ''
             }
         }
     } else if (notetype === 'img') {
@@ -90,17 +91,14 @@ function getNoteType(notetype) {
             }
 
         }
-    else {
+    else if (notetype === 'todo') {
 
         return {
 
             type: "note-todos",
             info: {
-                label: '',
-                todos: [
-                    { txt: '', doneAt: null },
-                    { txt: '', doneAt: null }
-                ]
+                label: 'Todo',
+                todos: []
             }
         }
     }
