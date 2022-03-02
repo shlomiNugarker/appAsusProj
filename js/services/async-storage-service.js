@@ -4,7 +4,8 @@ export const storageService = {
     post,
     put,
     remove,
-    postMany
+    postMany,
+    saveToSTorage
 }
 
 function query(entityType) {
@@ -53,6 +54,9 @@ function remove(entityType, entityId) {
             entities.splice(idx, 1)
             _save(entityType, entities)
         })
+}
+function saveToSTorage(entityType, entities) {
+    _save(entityType, entities)
 }
 
 function _save(entityType, entities) {

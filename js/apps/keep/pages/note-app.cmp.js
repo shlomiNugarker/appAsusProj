@@ -1,15 +1,27 @@
+import { noteService } from '../services/note.service.js'
+import noteListCmp from '../cmps/note-list.cmp.js'
+import addingNoteCmp from '../cmps/adding-note.cmp.js'
 export default {
   // props: [""],
   template: `
-        <section>
-            <h1>notes page :)</h1>
-        </section>
+
+  <adding-note-cmp/>
+  <note-list-cmp :notes ="notes"/>
+        
     `,
-  components: {},
-  created() { },
+  components: {
+    noteListCmp,
+    addingNoteCmp
+  },
+  created() {
+    noteService.query()
+      .then(notes => this.notes = notes)
+  },
   mount() { },
   data() {
-    return {}
+    return {
+      notes: null
+    }
   },
   methods: {},
   computed: {},
