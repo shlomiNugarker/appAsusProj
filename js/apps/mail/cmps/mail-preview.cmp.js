@@ -1,8 +1,8 @@
 export default {
   props: ["mail"],
   template: `
-        <section>
-        <router-link :to="'/mailBox/'+mail.id">
+        <section class="">
+        <router-link :to="'/mailBox/'+mail.id" class="link-row">
           <div class="container-row">
               <span class="title"> {{ mail.subject }} </span>
               <span>{{ mail.body }}</span>  

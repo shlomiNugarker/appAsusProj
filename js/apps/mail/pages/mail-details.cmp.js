@@ -5,9 +5,9 @@ import { mailService } from "../services/mail.service.js";
 export default {
   // props: [""],
   template: `
-        <section>
-            <h1>mail details</h1>
-            <p>{{ mail }}</p>
+        <section class="t">
+            <h1>{{ mail.subject }}</h1>
+            <p></p>
         </section>
     `,
   data() {
@@ -19,7 +19,7 @@ export default {
   created() {
     console.log('created');
     console.log(this.$route.params);
-    const id = this.$route.params.mailId;
+    const id = this.$route.params.emailId;
     console.log(id);
     mailService.get(id)
       .then(mail => this.mail = mail)
