@@ -5,11 +5,11 @@ import addNoteCmp from '../cmps/add-note.cmp.js'
 export default {
   // props: [""],
   template: `
-
+<section class = "main-layout flex">
   <add-note-cmp @add="addNote"/>
   <note-list-cmp :notes="notes" @remove="removeNote"/>
   <!-- <div class= "edit-note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis error mollitia ex adipisci quae ea aliquid iusto inventore, ullam culpa voluptate, sunt dolore eos amet? Possimus voluptatem sunt consectetur aliquid.</div> -->
-        
+</section>  
     `,
   components: {
     addNoteCmp,

@@ -2,7 +2,7 @@ import { noteService } from '../services/note.service.js'
 
 export default {
     template: `
-        <section class="add-note">
+        <section class="add-note add-note-layout flex">
             <!-- <form > -->
                 <input type="text" @keyup.enter.stop.prevent="onAddNote" :placeholder="instructions" required>
                 <label for="note-txt">Text</label>
