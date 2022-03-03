@@ -1,12 +1,9 @@
 export default {
     props: ['note'],
     template: `
-        <article class="note">
+        <article class="note-preview">
            <p>note.info</p> 
-        <div class="actions">
-            <button>X</button>
-            </div>
-            </article>
+        </article>
     `,
     components: {},
     created() { },
@@ -14,7 +11,9 @@ export default {
     data() {
         return {}
     },
-    methods: {},
+    methods: {
+
+    },
     computed: {},
     watch: {},
     unmounted() { },

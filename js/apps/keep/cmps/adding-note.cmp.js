@@ -1,4 +1,5 @@
 import { noteService } from '../services/note.service.js'
+
 export default {
     template: `
         <section class="add-note">
@@ -16,13 +17,23 @@ export default {
          </section>
     `,
     components: {},
-    created() { },
+    created() {
+        const id = this.$route.params.noteId;
+        if (id) {
+            noteService.get(id)
+                .then(note => {
+                    this.noteToedit = note
+                    this.noteType = this.noteToedit.type
+                });
+
+        }
+    },
     mount() { },
     data() {
         return {
             noteType: 'note-txt',
             instructions: 'Please Enter Text',
-            note: {
+            noteToedit: {
                 type: 'note-txt',
                 isPinned: false,
                 info: {
@@ -37,29 +48,33 @@ export default {
         onAddNote(ev) {
             var val = ev.target.value.trim();
             if (!val.length) return
+            var inputPlace = this.noteToedit.info
+
             if (this.noteType === 'note-txt')
-                this.note.info.txt = val
+                inputPlace.txt = val
             else if (this.noteType === 'note-todo') {
-                val.split(',').map(todo => {
-                    (this.note.info.todos).push({ txt: todo.trim(), doneAt: null })
+
+                var todos = val.split(',')
+                todos.map(todo => {
+                    (inputPlace.todos).push({ txt: todo.trim(), doneAt: null })
                 })
-                console.log(this.note);
+                //Video and image notes
             } else {
 
-                this.note.info.url = val;
+                inputPlace.url = val.trim()
 
             }
 
             ev.target.value = '';
-            noteService.saveNote(this.note)
-                .then(note => console.log(note))
+            this.$emit('add', this.noteToedit)
+
         },
     },
     computed: {
     },
     watch: {
         noteType(val) {
-            this.note = noteService.getNoteType(val)
+            this.noteToedit = noteService.getNoteType(val)
             switch (this.noteType) {
                 case 'note-txt':
                     this.instructions = 'Please Enter Text'
