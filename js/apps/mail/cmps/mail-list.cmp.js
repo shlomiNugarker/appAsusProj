@@ -4,16 +4,16 @@ import mailPreview from '../cmps/mail-preview.cmp.js'
 export default {
   props: ["mails"],
   template: `
-        <section class="mail-list">
-          <div class="compos">
+      <section class="">
+        <div class="flex">
+
+          <div class="compos flex">
             <button>New email</button>
-            
             <p>email</p>
             <button>Inbox</button>
             <button>starred</button>
             <button>sent mail</button>
             <button>Draft</button>      
-
           </div>
           
           <table>
@@ -23,16 +23,16 @@ export default {
               </tr>
             </tbody>
           </table>
+        </div>
 
-          
-
-          
-        </section>
+      </section>
     `,
   components: {
     mailPreview,
   },
-  created() {},
+  created() {
+
+  },
   mount() {
 
   },
@@ -48,6 +48,10 @@ export default {
   computed: {
     
   },
-  watch: {},
-  unmounted() {},
+  watch: {
+    
+  },
+  unmounted() {
+
+  },
 }

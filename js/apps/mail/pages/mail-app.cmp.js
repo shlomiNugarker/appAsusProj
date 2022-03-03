@@ -6,9 +6,10 @@ import mailFilter from '../cmps/mail-filter.cmp.js'
 export default {
   // props: [""],
   template: `
-        <section>
-            <h1>mail index box</h1>
-            <mail-filter></mail-filter>
+        <section class="mail-app ">
+           
+              <mail-filter></mail-filter>
+
             <mail-list :mails="listToShow"></mail-list>
 
         </section>

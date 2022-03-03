@@ -2,14 +2,26 @@ export default {
   // props: [""],
   template: `
         <section>
-            <h1>mail-filter</h1>
+          <div class="main-filter">
+            
+            <input type="text" placeholder="search mail">
+          </div>
         </section>
     `,
   components: {},
   created() {},
   mount() {},
   data() {
-    return {}
+    return {
+      filterBy: {
+        search: null,
+        read: null,
+        sent: null,
+        unread: null,
+        date: null,
+        title: null,
+      }
+    }
   },
   methods: {},
   computed: {},
