@@ -5,9 +5,9 @@ const STORAGE_KEY = 'notesDB'
 export const noteService = {
     query,
     saveNote,
-    getNoteType,
+    getEmptyNote,
     getNote,
-    remove
+    remove,
 }
 
 function query() {
@@ -57,7 +57,7 @@ function query() {
         })
 }
 
-function getNoteType(notetype) {
+function getEmptyNote(notetype) {
 
     if (notetype === 'note-txt') {
         return {
@@ -83,7 +83,7 @@ function getNoteType(notetype) {
     else if (notetype === 'note-video')
         return {
 
-            type: "note-img",
+            type: "note-video",
             info: {
                 url: '',
                 title: 'Title'
@@ -93,7 +93,7 @@ function getNoteType(notetype) {
             }
 
         }
-    else if (notetype === 'note-todo') {
+    else if (notetype === 'note-todos') {
 
         return {
 
@@ -118,3 +118,4 @@ function saveNote(note) {
 function remove(id) {
     return storageService.remove(STORAGE_KEY, id)
 }
+

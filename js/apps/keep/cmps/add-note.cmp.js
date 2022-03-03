@@ -9,31 +9,22 @@ export default {
                 <input type="radio" name="note-txt" value="note-txt" v-model ="noteType" />
                  <label for="note-video">Image</label>
                 <input  type="radio" name="note-img" value="note-img" v-model="noteType" />
-               <label for="note-video">Video</label>
+                <label for="note-video">Video</label>
                 <input  type="radio" name="note-video" value="note-video" v-model="noteType" />
                 <label for="note-video">Todo</label>
-                <input type="radio" name="note-todo" value="note-todo" v-model="noteType" />
+                <input type="radio" name="note-todos" value="note-todos" v-model="noteType" />
             <!-- </form> -->
          </section>
     `,
     components: {},
     created() {
-        const id = this.$route.params.noteId;
-        if (id) {
-            noteService.get(id)
-                .then(note => {
-                    this.noteToedit = note
-                    this.noteType = this.noteToedit.type
-                });
-
-        }
     },
     mount() { },
     data() {
         return {
             noteType: 'note-txt',
             instructions: 'Please Enter Text',
-            noteToedit: {
+            newNote: {
                 type: 'note-txt',
                 isPinned: false,
                 info: {
@@ -48,7 +39,7 @@ export default {
         onAddNote(ev) {
             var val = ev.target.value.trim();
             if (!val.length) return
-            var inputPlace = this.noteToedit.info
+            var inputPlace = this.newNote.info
 
             if (this.noteType === 'note-txt')
                 inputPlace.txt = val
@@ -66,7 +57,7 @@ export default {
             }
 
             ev.target.value = '';
-            this.$emit('add', this.noteToedit)
+            this.$emit('add', this.newNote)
 
         },
     },
@@ -74,7 +65,7 @@ export default {
     },
     watch: {
         noteType(val) {
-            this.noteToedit = noteService.getNoteType(val)
+            this.newNote = noteService.getEmptyNote(val)
             switch (this.noteType) {
                 case 'note-txt':
                     this.instructions = 'Please Enter Text'
@@ -85,7 +76,7 @@ export default {
                 case 'note-video':
                     this.instructions = 'Please Enter video URL'
                     break
-                case 'note-todo':
+                case 'note-todos':
                     this.instructions = 'Please Enter comma separated list'
                     break
             }

@@ -1,13 +1,17 @@
 export default {
-    props: ['note'],
+    props: ['noteInfo'],
     template: `
         <article class="note-preview">
-           <p>note.info</p> 
+           <p>{{noteInfo.txt}}</p>
         </article>
     `,
     components: {},
-    created() { },
-    mount() { },
+    created() {
+
+    },
+    mount() {
+
+    },
     data() {
         return {}
     },

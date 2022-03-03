@@ -1,30 +1,43 @@
-import notePreviewCmp from '../cmps/note-preview.cmp.js'
-
+import notePreviewCmp from './note-txt.cmp.js'
+import noteTxt from './note-txt.cmp.js';
+import noteImg from './note-img.cmp.js';
+import noteVideo from './note-video.cmp.js';
+import noteTodos from './note-todos.cmp.js';
 export default {
     props: ['notes'],
     template: `
-        <section class = "notes-list note-list-layout">
+        <section class ="notes-list note-list-layout">
             <ul class="clean-list">
-            <li v-for="note in notes" :key="note.id">
-                   <note-preview-cmp :note="note" />
+            <li v-for="(note, idx) in notes">
+            <component :is="note.type" :noteInfo="note.info" :key="note.id"></component>
                    <div class="actions">
                         <button @click = onRemove(note.id)>X</button>
-                        <button @click = onEdit(note.id)>Edit</button>
+                        <!-- <button @click = onEdit(note.id)>Edit</button> -->
                     </div>
                 </li>
             </ul>
         </section>
     `,
     components: {
-        notePreviewCmp
+        notePreviewCmp,
+        noteTxt,
+        noteImg,
+        noteVideo,
+        noteTodos
     },
-    created() { },
-    mount() { },
+    created() {
+
+    },
+    mount() {
+    },
     data() {
-        return {}
+        return {
+
+        }
     },
     methods: {
         onRemove(id) {
+
             this.$emit('remove', id);
 
         },
