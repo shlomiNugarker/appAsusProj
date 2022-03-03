@@ -1,0 +1,17 @@
+.filter-container{
+    /* display: flex; */
+    height: 50px;
+   
+
+}
+.filter-container input{
+    min-width: 50vw;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    display: flex;
+    
+    align-content: center;
+    border-radius: 5px;
+    border: none;
+
+}

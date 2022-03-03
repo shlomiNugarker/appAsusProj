@@ -1,29 +1,59 @@
+import longText from "../../../cmps/long-text.cmp.js"
 export default {
   props: ["mail"],
   template: `
-        <section class="">
-        <router-link :to="'/mailBox/'+mail.id" class="link-row">
-          <div class="container-row">
-              <span class="title"> {{ mail.subject }} </span>
-              <span>{{ mail.body }}</span>  
-          </div>
-          </router-link>
 
-        </section>
+    <section>
+      <router-link :to="'/mailBox/'+mail.id" class="link-row ">
+        
+          
+            <span class="title">
+              <span>😶</span>
+              <span>😶</span>
+              <span>😶</span>
+              <span class=""> {{ mail.subject }} </span>
+            </span>
+
+
+          <span>  
+              {{ getShortTxt }}
+          </span>
+        
+
+
+        <span>
+        {{ getSentTime }}
+        </span>
+        
+      </router-link>
+    </section>
 
     `,
-  components: {},
+  components: {
+    longText
+  },
   created() {
-  
+    
   },
   mount() {
-    // console.log(this.mail);
+
   },
   data() {
     return {}
   },
   methods: {},
-  computed: {},
+  computed: {
+    getShortTxt(){
+      if(this.mail.body.length < 50) return this.mail.body
+      return this.mail.body.slice(0, 50) + '...'
+    },
+    getSentTime(){
+      var sent = this.mail.sentAt
+      var date = new Date(sent).toLocaleDateString()
+
+      return date
+    }
+  },
   watch: {},
   unmounted() {},
 }
