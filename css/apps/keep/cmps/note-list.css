@@ -1,7 +1,14 @@
-li{
-    background-color: aqua;
-        height: 100px;
-        width: 100px;
-        border:2px,solid black;
-        border-radius: 5px;
+
+   .note-list{
+     
+       /* background-color: lightgray; */
     }
+    
+    .note-list > li{
+        min-height: 8rem; 
+        max-height: 20rem;
+        width: 18.75rem;
+        border-radius: 5px;
+        border: 2px solid #a8a8a8; 
+        
+        }

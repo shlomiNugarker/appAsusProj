@@ -6,10 +6,10 @@ import noteTodos from './note-todos.cmp.js';
 export default {
     props: ['notes'],
     template: `
-        <section class ="notes-list note-list-layout">
-            <ul class="clean-list">
+        <section>
+            <ul class="clean-list note-list note-list-layout">
             <li v-for="(note, idx) in notes">
-            <component :is="note.type" :noteInfo="note.info" :key="note.id"></component>
+            <component :is="note.type" :noteInfo="note.info"></component>
                    <div class="actions">
                         <button @click = onRemove(note.id)>X</button>
                         <!-- <button @click = onEdit(note.id)>Edit</button> -->

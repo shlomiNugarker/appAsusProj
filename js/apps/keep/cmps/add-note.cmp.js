@@ -65,7 +65,7 @@ export default {
     },
     watch: {
         noteType(val) {
-            this.newNote = noteService.getEmptyNote(val)
+            this.newNote = { ...noteService.getEmptyNote(val) }
             switch (this.noteType) {
                 case 'note-txt':
                     this.instructions = 'Please Enter Text'

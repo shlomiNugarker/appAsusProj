@@ -1,7 +1,7 @@
 export default {
     props: ['noteInfo'],
     template: `
-        <article class="note-preview">
+        <article class="note">
            <p>{{noteInfo.url}}</p> 
         </article>
     `,

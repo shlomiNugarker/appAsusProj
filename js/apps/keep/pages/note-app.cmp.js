@@ -33,7 +33,8 @@ export default {
       noteService.saveNote(note)
         .then(note => {
           this.notes.push(note)
-          eventBus.emit('show-msg', { txt: 'Saved succesfully', type: 'success' })
+          // eventBus.emit('show-msg', { txt: 'Saved succesfully', type: 'success' })
+          console.log(this.notes)
         })
         .catch(err => {
           eventBus.emit('show-msg', { txt: `could not be  added`, type: 'error' })

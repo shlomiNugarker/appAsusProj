@@ -5,22 +5,36 @@
 
 
 .note-list-layout{
-    /* column-gap: 10px;
-    min-width: 80vw;
-    min-height: 50vh;
-    background-color: red;
+     
+    min-height: 0;  
+    min-width: 0;
+    align-items: center; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.40rem;
     margin: auto;
-     */
-
-     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    
-     grid-template-rows: 50px;
+    /* display: grid;
+     grid-template-columns: repeat(3,1fr) ; 
+     grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
      grid-auto-flow: dense;
-     gap: 0.187rem;
+     row-gap: 2.5rem;
      padding: 0.625rem;
      margin: 0 auto;
-     background-color: red;
-}
+     /* object-fit: contain; 
+     /* justify-items: center; */
+    }
+
+    .note-layout{
+        
+            display: inline;
+            background-color: white;
+            margin: auto;
+            display: block;
+            min-height: 5%;
+            position: relative;
+            padding: 5px;
+          
+    }
 
 .add-note-layout{
     height: 6rem;
@@ -28,6 +42,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: lightgray;
-    margin: auto;
+    margin: 10px auto;
+    border-radius: 1.50rem;
+
 }

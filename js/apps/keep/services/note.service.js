@@ -111,8 +111,8 @@ function getNote(id) {
 }
 
 function saveNote(note) {
-    if (note.id) return storageService.put(STORAGE_KEY, note);
-    else return storageService.post(STORAGE_KEY, note);
+    // if (note.id) return storageService.put(STORAGE_KEY, note);
+    return storageService.post(STORAGE_KEY, note);
 }
 
 function remove(id) {

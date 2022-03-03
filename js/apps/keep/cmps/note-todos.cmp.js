@@ -1,7 +1,7 @@
 export default {
     props: ['noteInfo'],
     template: `
-        <article v-for = "(info,idx) in noteInfo.todos"  class="note-preview">
+        <article v-for = "(info,idx) in noteInfo.todos"  class="note">
            <p>{{info.txt}}</p> 
            <p>{{info.doneAt}}</p> 
         </article>
