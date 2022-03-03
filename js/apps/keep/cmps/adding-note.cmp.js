@@ -5,13 +5,13 @@ export default {
             <!-- <form > -->
                 <input type="text" @keyup.enter.stop.prevent="onAddNote" :placeholder="instructions" required>
                 <label for="note-txt">Text</label>
-                <input type="radio" name="note-txt" value="txt" v-model ="noteType" />
+                <input type="radio" name="note-txt" value="note-txt" v-model ="noteType" />
                  <label for="note-video">Image</label>
-                <input  type="radio" name="note-img" value="img" v-model="noteType" />
+                <input  type="radio" name="note-img" value="note-img" v-model="noteType" />
                <label for="note-video">Video</label>
-                <input  type="radio" name="note-video" value="video" v-model="noteType" />
+                <input  type="radio" name="note-video" value="note-video" v-model="noteType" />
                 <label for="note-video">Todo</label>
-                <input type="radio" name="note-todo" value="todo" v-model="noteType" />
+                <input type="radio" name="note-todo" value="note-todo" v-model="noteType" />
             <!-- </form> -->
          </section>
     `,
@@ -20,7 +20,7 @@ export default {
     mount() { },
     data() {
         return {
-            noteType: 'txt',
+            noteType: 'note-txt',
             instructions: 'Please Enter Text',
             note: {
                 type: 'note-txt',
@@ -37,9 +37,9 @@ export default {
         onAddNote(ev) {
             var val = ev.target.value.trim();
             if (!val.length) return
-            if (this.noteType === 'txt')
+            if (this.noteType === 'note-txt')
                 this.note.info.txt = val
-            else if (this.noteType === 'todo') {
+            else if (this.noteType === 'note-todo') {
                 val.split(',').map(todo => {
                     (this.note.info.todos).push({ txt: todo.trim(), doneAt: null })
                 })
@@ -61,16 +61,16 @@ export default {
         noteType(val) {
             this.note = noteService.getNoteType(val)
             switch (this.noteType) {
-                case 'txt':
+                case 'note-txt':
                     this.instructions = 'Please Enter Text'
                     break
-                case 'img':
+                case 'note-img':
                     this.instructions = 'Please Enter image URL'
                     break
-                case 'video':
+                case 'note-video':
                     this.instructions = 'Please Enter video URL'
                     break
-                case 'todo':
+                case 'note-todo':
                     this.instructions = 'Please Enter comma separated list'
                     break
             }

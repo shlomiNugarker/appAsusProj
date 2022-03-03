@@ -57,7 +57,7 @@ function query() {
 
 function getNoteType(notetype) {
 
-    if (notetype === 'txt') {
+    if (notetype === 'note-txt') {
         return {
             type: "note-txt",
             isPinned: false,
@@ -65,7 +65,7 @@ function getNoteType(notetype) {
                 txt: ''
             }
         }
-    } else if (notetype === 'img') {
+    } else if (notetype === 'note-img') {
         return {
             type: "note-img",
             info: {
@@ -78,7 +78,7 @@ function getNoteType(notetype) {
 
         }
     }
-    else if (notetype === 'video')
+    else if (notetype === 'note-video')
         return {
 
             type: "note-img",
@@ -91,7 +91,7 @@ function getNoteType(notetype) {
             }
 
         }
-    else if (notetype === 'todo') {
+    else if (notetype === 'note-todo') {
 
         return {
 
