@@ -1,4 +1,5 @@
 import { noteService } from '../services/note.service.js'
+
 export default {
     template: `
         <section class="add-note">
@@ -8,21 +9,22 @@ export default {
                 <input type="radio" name="note-txt" value="note-txt" v-model ="noteType" />
                  <label for="note-video">Image</label>
                 <input  type="radio" name="note-img" value="note-img" v-model="noteType" />
-               <label for="note-video">Video</label>
+                <label for="note-video">Video</label>
                 <input  type="radio" name="note-video" value="note-video" v-model="noteType" />
                 <label for="note-video">Todo</label>
-                <input type="radio" name="note-todo" value="note-todo" v-model="noteType" />
+                <input type="radio" name="note-todos" value="note-todos" v-model="noteType" />
             <!-- </form> -->
          </section>
     `,
     components: {},
-    created() { },
+    created() {
+    },
     mount() { },
     data() {
         return {
             noteType: 'note-txt',
             instructions: 'Please Enter Text',
-            note: {
+            newNote: {
                 type: 'note-txt',
                 isPinned: false,
                 info: {
@@ -37,29 +39,33 @@ export default {
         onAddNote(ev) {
             var val = ev.target.value.trim();
             if (!val.length) return
+            var inputPlace = this.newNote.info
+
             if (this.noteType === 'note-txt')
-                this.note.info.txt = val
+                inputPlace.txt = val
             else if (this.noteType === 'note-todo') {
-                val.split(',').map(todo => {
-                    (this.note.info.todos).push({ txt: todo.trim(), doneAt: null })
+
+                var todos = val.split(',')
+                todos.map(todo => {
+                    (inputPlace.todos).push({ txt: todo.trim(), doneAt: null })
                 })
-                console.log(this.note);
+                //Video and image notes
             } else {
 
-                this.note.info.url = val;
+                inputPlace.url = val.trim()
 
             }
 
             ev.target.value = '';
-            noteService.saveNote(this.note)
-                .then(note => console.log(note))
+            this.$emit('add', this.newNote)
+
         },
     },
     computed: {
     },
     watch: {
         noteType(val) {
-            this.note = noteService.getNoteType(val)
+            this.newNote = noteService.getEmptyNote(val)
             switch (this.noteType) {
                 case 'note-txt':
                     this.instructions = 'Please Enter Text'
@@ -70,7 +76,7 @@ export default {
                 case 'note-video':
                     this.instructions = 'Please Enter video URL'
                     break
-                case 'note-todo':
+                case 'note-todos':
                     this.instructions = 'Please Enter comma separated list'
                     break
             }
