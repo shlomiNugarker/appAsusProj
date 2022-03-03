@@ -7,7 +7,7 @@ export default {
             <p>{{msg.txt}}</p>
         </section>
     `,
-      data() {
+    data() {
         return {
             msg: null
         };
@@ -16,12 +16,12 @@ export default {
         this.unsubscribe = eventBus.on('show-msg', this.showMsg);
     },
     methods: {
-        // showMsg(msg) {
-        //     this.msg = msg;
-        //     setTimeout(() => {
-        //         this.msg = null;
-        //     }, 3000);
-        // }
+        showMsg(msg) {
+            this.msg = msg;
+            setTimeout(() => {
+                this.msg = null;
+            }, 3000);
+        }
     },
     unmounted() {
         this.unsubscribe();
