@@ -1,11 +1,8 @@
 export default {
   // props: [""],
   template: `
-        <section>
-          <div class="main-filter">
-            
-            <input type="text" placeholder="search mail">
-          </div>
+        <section class="">
+            <input type="text" placeholder="search mail" @input="setFilter" v-model="filterBy.search">
         </section>
     `,
   components: {},
@@ -23,7 +20,12 @@ export default {
       }
     }
   },
-  methods: {},
+  methods: {
+    setFilter(){
+      console.log(this.filterBy.search);
+      this.$emit('filtered', this.filterBy)
+    }
+  },
   computed: {},
   watch: {},
   unmounted() {},

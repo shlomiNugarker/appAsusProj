@@ -7,7 +7,11 @@ _createMails()
 
 export const  mailService = {
     query,
-    get
+    get,
+    save,
+    remove,
+    getLoggedinUser
+    
 }
 function query(){
     return storageService.query(MAIL_KEY)
@@ -27,6 +31,13 @@ function save(mail) {
     else return storageService.post(MAIL_KEY, mail)
 }
 
+function getLoggedinUser(){
+    return  {
+        email: 'user@appsus.com',
+        fullname: 'Mahatma Appsus'
+       }
+}
+
 function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY);
     if (!mails || !mails.length) {
@@ -41,7 +52,7 @@ function _createMails() {
             },
             {
             id: 'e102',
-            subject: 'Sprit 3 finished',
+            subject: 'Sprit 3',
             body: 'hello shlomi, how is it going?',
             isRead: false,
             sentAt : 1551133933394,
@@ -49,8 +60,8 @@ function _createMails() {
             },
             {
             id: 'e104',
-            subject: 'SWhats uppp!',
-            body: 'hello shlomi, how is it going?hello shlomi, how is it going?',
+            subject: 'Whats up!',
+            body: 'hello shlomi, how is it going? hello shlomi, how is it going?',
             isRead: false,
             sentAt : 1555133933394,
             to: 'momo@momo.com'
@@ -58,7 +69,7 @@ function _createMails() {
             {
                 id: 'e105',
                 subject: 'ok google!',
-                body: 'google, how is it going?hello shlomi, how is it going?',
+                body: 'google, how is it going?hello shlomi, how is it going? google, how is it going?hello shlomi, how is it going?',
                 isRead: false,
                 sentAt : 1555133933394,
                 to: 'momo@momo.com'

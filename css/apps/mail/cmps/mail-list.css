@@ -1,51 +1,5 @@
-.mail-list{
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    /* min-height: 50vh; */
-    flex-direction: row;
-}
-.mail-list table {
-    /* width: 80vw; */
-    display: flex;
-}
-.main-filter{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding: 10px;
-    margin: 10px 0;
-    /* background-color: lightskyblue; */
-}
-.main-filter input{
-    border-radius: 5px;
-    border: 1px solid;
-    padding: 3px;
-}
 .link-row{
     color: black;
     text-decoration: none;
-}
- .compos {
-    flex-direction: column;
-    width: 180px;
-    /* width: 20vw; */
-}
-.compos button{
-    display: block;
-    /* width: 20vw; */
-    background-color: white;
-    border: none;
-    text-align: start;
-}
-
-table .row{
-    background-color: rgb(227, 226, 226);
-    height: 30px;
     
 }
-.container-row{
-    /* width: 80vw; */
-    display: flex;
-  
- }
-

@@ -1,3 +1,13 @@
 .mail-nav{
  
 }
+.mail-app{
+    
+}
+
+.compos {
+    flex-direction: column;
+    /* width: 180px; */
+    width: 20vw;
+    /* height: 100vh; */
+}
