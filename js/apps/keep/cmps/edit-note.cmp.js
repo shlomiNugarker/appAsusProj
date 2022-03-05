@@ -38,12 +38,39 @@ export default {
                 this.newInput = info.url
 
             } else if (this.noteToEdit.type === 'note-todos') {
-                (info.todos).map(todo => this.newInput += todo.txt)
-                console.log(this.newInput)
+                var newToDoList = (info.todos).map(todo => todo.txt)
+                // console.log(this.newInput)
+                console.log(newToDoList)
+                this.newInput = newToDoList
             }
         },
 
-        update() { }
+        update() { 
+            
+            var noteType = this.noteToEdit.type
+            var inputPlace =  this.noteToEdit.info
+            console.log(inputPlace);
+
+            if (noteType === 'note-txt')
+                inputPlace.txt = this.newInput
+            else if (noteType === 'note-todos') {
+                this.noteToEdit.info.todos = []
+                var todos = this.newInput.split(',')
+                todos.map(todo => {
+                    (inputPlace.todos).push({ txt: todo.trim(), doneAt: null })
+                })
+                //Video and image notes
+            } else {
+
+                inputPlace.url = this.newInput
+
+            }
+            noteService.saveNote(this.noteToEdit)
+            .then(note=> this.$emit('updatedNote', this.noteToEdit))
+            this.newInput = null
+            // this.$emit('add', this.newNote);
+
+        }
     },
     computed: {
 
