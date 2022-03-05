@@ -12,3 +12,11 @@
 @import '../mail/cmps/mail-list.css';
 @import '../mail/cmps/mail-preview.css';
 @import '../mail/cmps/mail-filter.css';
+@import '../mail/cmps/mail-folder.css';
+@import '../mail/cmps/mail-compous.css';
+@import './cmps/mail-details.css';
+
+/* SETUP */
+
+@import './setup/vars.css';
+@import './setup/mq.css';

@@ -1,0 +1,50 @@
+
+
+
+.time-details{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-container{
+    display: flex;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    width: 30vw;
+    min-height: 30vh;
+    margin: 0 auto;
+    left: 35%;
+    top: 20vh;
+
+    border-radius: 5px;
+    border: 2px solid black;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+.page-container button{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.page-container h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.details-msg{
+    
+    margin: auto;
+ 
+
+}
+
+
+
+
+
+
+
+

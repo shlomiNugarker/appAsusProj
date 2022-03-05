@@ -1,13 +1,36 @@
-.mail-nav{
- 
-}
+
 .mail-app{
-    
+    /* background-color: lightsalmon; */
+    margin: 0 auto;
+    display: flex;
+    width: 95vw;
+    padding: 10px;
+    justify-content: space-between;
+    min-height: 90vh;
 }
 
-.compos {
-    flex-direction: column;
-    /* width: 180px; */
-    width: 20vw;
-    /* height: 100vh; */
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

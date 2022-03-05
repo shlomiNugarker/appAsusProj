@@ -1,114 +1,135 @@
 import { mailService } from '../services/mail.service.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
-
+import {utilService} from '../../../services/util-service.js'
+import mailFolderList from '../cmps/mail-folder-list.js'
+import mailCompous from '../cmps/mail-compous.cmp.js'
 
 export default {
-  // props: [""],
   template: `
-    <section class="mail-app flex">
-   
-      <div class="side">
-        
-        <div class="main-menu">
-          <p class="logo">Gmail</p>
-        </div>
+    <section class="mail-app" >
 
-        <div class="compose">
-          <p @click="clickCompose">Compose</p>
-        </div>
-      
-        <p>email </p>
-        <p>Inbox <span>{{ getUnreadCount }}</span></p>
-        <p>starred</p>
-        <p>sent mail</p>
-        <p>Draft</p>     
-         
-      </div>
+    <div class="left-side">
+      <mail-folder-list :mails="mails" :folderType="currFolder" @select="clickCompose" @folderSelected="folderSelected"/>
+    </div>
 
       <div class="middle">
-        <div class="filter-container">
-          <mail-filter @filtered="setFilter"></mail-filter>
-        </div>
-        <div>
+        <mail-filter @filtered="setFilter" :folderType="currFolder"/>
 
-        </div>
-        <mail-list :mails="listToShow" @readed="setReaded(idx)"></mail-list>
+        <mail-list :mails="mailsToShow" @readed="setReaded(idx)" @remove="removeMail"/>
+      </div> 
+
+      <div class="right-side">
+       
       </div>
 
-
-      <div class="l-side">
-        
-      </div>
-
-      <div v-if="isNewMsg" class="new-msg">
-
-        <div class="title-mew-msg">
-            <span>New Message</span>
-            <span @click="isNewMsg=!isNewMsg">Close</span>
-        </div>
-
-        <div class="input-to-msg">
-          <input type="text" placeholder="To">
-        </div>
-
-        <div class="input-subject-msg">
-          <input type="text" ref="subject" placeholder="Subject">
-        </div>
-
-        <div class="input-text-area">
-          <textarea name="" id="" cols="30" rows="20"></textarea>
-          
-        </div>
-        
-      </div>
-
+      <mail-compous v-if="isNewMsg" @close="close" @addMail="addMail"></mail-compous>
     </section> 
-    `,
+  `,
   components: {
     mailList,
-    mailFilter
+    mailFilter,
+    mailFolderList,
+    mailCompous
   },
   created() {
     mailService.query()
-    .then(mails => this.mails = mails)
-    console.log( mailService.getLoggedinUser());
-    this.user = mailService.getLoggedinUser()
-   
+      .then(mails => this.mails = mails)
+      this.user = mailService.getLoggedinUser()
   },
-
-  mount() {},
   data() {
     return {
       mails: null,
-      filterBy: null,
+      filterBy: {
+        isRead: 'all',
+        txt: '',
+        sortType: 'date',
+        sortAt: true,
+        sortTxt: false,
+      },
       user: null,
       isNewMsg: false,
+      currFolder: 'inbox',
+      mailsByFolder: null,
 
+      newMsg: {
+        to: '',
+        subject: '',
+        body: '',
+      }
     }
   },
   methods: {
+    removeMail(id){
+      var isTrash = this.mails.find(mail=>{
+        return mail.id === id
+      })
+      if(isTrash.status !== 'trash'){
+        isTrash.status = 'trash'
+        mailService.save(isTrash)
+        return
+      }
+      else {
+        mailService.remove(id)
+          .then(()=>{
+            const idx = this.mails.findIndex((mail) => mail.id === id);
+            this.mails.splice(idx, 1);
+          })
+          .catch(err=>{
+            console.log(err,'error on splice mail');
+          })
+      }
+
+    },
     setFilter(filterBy){
       this.filterBy = filterBy
     },
     clickCompose(){
       this.isNewMsg = !this.isNewMsg
-      console.log(this.$refs.subject);
-      
-    }
+    },
+    folderSelected(str){
+      this.currFolder = str
+    },
 
- 
+    close(){
+      this.isNewMsg = false
+    },
+    addMail(mail){
+      this.mails.push(mail)
+      this.isNewMsg = false
+    },
   },
   computed: {
-    // mail
-    listToShow(){
-      if(!this.filterBy) return this.mails
-      const regex = new RegExp(this.filterBy.search, 'i');
-      return this.mails.filter(mail =>{
-        return regex.test(mail.subject)
-        //  &&  this.filterBy.
-       
+    mailsToShow(){
+      if(!this.mails) return
+      var mailsToReturn = this.mails.filter(mail =>  {
+        const regex = new RegExp(this.filterBy?.txt, 'i');
+        return mail.status === this.currFolder && regex.test(mail.subject) 
       })
+
+      if(this.filterBy.sortType === 'date') {
+        if(this.filterBy.sortAt) {
+          this.filterBy.sortTxt = false
+          mailsToReturn.sort((mailA, mailB) => mailB.sentAt - mailA.sentAt)
+        } 
+        else if(!this.filterBy.sortAt){
+          this.filterBy.sortTxt = false
+          mailsToReturn.sort((mailA, mailB) => mailA.sentAt - mailB.sentAt)
+        } 
+      }
+
+      else if(this.filterBy.sortType === 'subject'){
+        if(this.filterBy.sortTxt){
+          mailsToReturn.sort((mailA, mailB) => mailA.subject.localeCompare(mailB.subject))
+        }
+        else if(!this.filterBy.sortTxt){
+          mailsToReturn.sort((mailA, mailB) => mailB.subject.localeCompare(mailA.subject))
+        }
+      }
+      
+      if(this.filterBy.isRead === 'all') return mailsToReturn
+      else if(this.filterBy.isRead === 'read') return mailsToReturn.filter(mail => mail.isRead === true)
+      else if(this.filterBy.isRead === 'unread') return mailsToReturn.filter(mail => mail.isRead === false)
     },
     getUnreadCount(){
       if(!this.mails) return
@@ -116,10 +137,25 @@ export default {
       this.mails.forEach(mail => {
         if(!mail.isRead) unreadCount++
       })
-      console.log(unreadCount);
       return unreadCount 
     }
   },
-  watch: {},
-  unmounted() {},
+  watch: {
+    mails:{
+      handler() {
+        console.log('mails was changed');
+      }
+    }
+  }
+
 }
+
+
+
+
+
+
+
+
+
+

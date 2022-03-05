@@ -2,51 +2,57 @@
 import mailPreview from '../cmps/mail-preview.cmp.js'
 import { mailService } from '../services/mail.service.js'
 
+
 export default {
   props: ["mails"],
   template: `
-      <section class="">
+      <table>
 
-        <table class="">
-        
-          <tr v-bind:class="{read:mail.isRead, unread: !mail.isRead}" class="row" v-for="mail in mails" :key="mail.id">
-            <mail-preview  :mail="mail" @click="setReaded(mail)"></mail-preview>
-          </tr>
-        
-        </table>
-  
+      <p>{{ showMsg }}</p>
+   
 
-      </section>
+        <tr v-bind:class="setClass(mail)" class="row flex" v-for="mail in mails" :key="mail.id">
+ 
+        <div>
+          <img @click="remove(mail.id)" class="delete-icon"  src="./css/apps/mail/icons/delete.svg" >
+        </div>
+
+       
+         
+          <mail-preview :mail="mail" ></mail-preview>
+        </tr>
+      </table>
+
+
+
+
+
+
+
     `,
   components: {
     mailPreview,
   },
-  created() {
-
-  },
-  mount() {
-
-  },
   data() {
     return {
-  
-
+      setClass(mail){
+        return {
+          read:mail.isRead,
+          unread: !mail.isRead
+        }
+      },
     }
   },
   methods: {
-    setReaded(mail){
-      mail.isRead = true
-      mailService.save(mail)
-      .then(updatedMail => console.log())
-    }
+    remove(id){
+      this.$emit('remove', id);
+    },
   },
   computed: {
+    showMsg(){
+      if(!this.mails.length) return 'No massage here.'
+    }
     
-  },
-  watch: {
-    
-  },
-  unmounted() {
+  }
 
-  },
 }

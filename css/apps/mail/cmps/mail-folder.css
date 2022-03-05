@@ -1,0 +1,44 @@
+.logo-container{
+    /* background-color: lightcyan; */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.btns-container{
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+.logo{
+    font-size: 20px;
+}
+
+.btns-container p{
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+ 
+    
+}
+.btns-container div{
+    border-radius: 0px 10px 10px 0;
+    padding: 5px;
+    cursor: pointer;
+}
+.btns-container div p span {
+    margin-left: 10px;
+}
+
+.btns-container div:hover{
+    background-color: var(--clr1);
+
+}
+
+.red{
+    background-color: red;
+}
+
+
+

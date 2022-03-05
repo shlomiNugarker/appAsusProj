@@ -1,6 +1,18 @@
 .read{
-    background-color: lightgray;
+    background-color: var(--clr1);
 }
 .unread{
     background-color: white;
+}
+
+
+.star-icon{
+    height: 30px;
+    width: 30px;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.row-preview{
+   
 }

@@ -26,8 +26,6 @@ const routes = [
         path: '/keep/:noteId?',
         component: keepPage
     },
- 
-
 ]
 
 export const router = VueRouter.createRouter({

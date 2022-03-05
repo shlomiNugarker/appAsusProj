@@ -1,17 +1,77 @@
-.filter-container{
-    /* display: flex; */
-    height: 50px;
-   
 
+
+.filter-container{
+    min-height: 60px;
+    /* background-color: lightpink; */
+    /* display: flex; */
+    align-items: center;
 }
 .filter-container input{
-    min-width: 50vw;
-    background-color: rgb(240, 240, 240);
-    padding: 10px;
-    display: flex;
-    
-    align-content: center;
-    border-radius: 5px;
+    height: 50px;
+    width: 50%;
+    border-radius: 10px;
     border: none;
-
+    background-color: var(--clr1);
+    padding: 5px 15px;
+    margin-left: 10px;
 }
+.filter-container div{
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.delete-icon{
+    height: 25px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.folder-img{
+    width: 25px;
+    margin: 0 5px;
+    margin-right: 20px;
+}
+
+.folder-btn-contnr{
+    
+}
+.sort-container{
+    border-bottom: 1px solid var(--clr1);
+}
+.filter-container select {
+    border: 1px solid var(--clr1);
+    border-radius: 5px;
+    padding: 3px 15px;
+    margin: 5px 10px;
+    
+}
+.filter-container button{
+    border: 1px solid var(--clr1);
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px 10px;
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

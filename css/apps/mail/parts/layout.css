@@ -1,4 +1,24 @@
-.main-layout{
+.middle{
     margin: 0 auto;
-    width: 90vw;
+
+    width: 75vw; 
+}
+.left-side{
+    /* margin: 0 auto; */
+
+    padding-left: 10px;
+    width: 15vw;
+    border-right: 1px solid var(--clr1);
+    border-left: 1px solid var(--clr1);
+
+
+}
+
+.right-side{
+    margin: 0 auto;
+
+    width: 5vw;
+    border-left: 1px solid var(--clr1);
+
+
 }
