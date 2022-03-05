@@ -1,19 +1,19 @@
 export default {
     props: ['noteInfo'],
     template: `
-        <article v-for = "(info,idx) in noteInfo.todos"  class="note">
-           <p>{{info.txt}}</p> 
-           <p>{{info.doneAt}}</p> 
+        <article  class="note">
+            <ul v-for = "(info,idx) in noteInfo.todos" >
+           <li>{{info.txt}} <span v-if="info.doneAt">Done At:{{info.doneAt}}</span>  </li>
+           </ul> 
         </article>
     `,
     components: {},
     created() {
-        console.log('im here');
     },
     mount() { },
     data() {
         return {
-            // txts: noteInfo.todos
+
         }
     },
     methods: {
@@ -21,7 +21,6 @@ export default {
     },
     computed: {
         showTodos() {
-            txts.map({})
         }
     },
     watch: {},
