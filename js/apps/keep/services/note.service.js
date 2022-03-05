@@ -19,32 +19,31 @@ function query() {
 
                 notes = [
                     {
-                        id: "n101",
-                        type: "note-txt",
+                        id: 'n101',
+                        type: 'note-txt',
                         isPinned: true,
                         info: {
-                            txt: "Fullstack Me Baby!"
+                            txt: 'Fullstack Me Baby!'
                         }
                     },
                     {
-                        id: "n102",
-                        type: "note-img",
+                        id: 'n102',
+                        type: 'note-img',
                         info: {
-                            url: "img/1.jpg",
-                            title: "Bobi and Me"
+                            url: 'http://some-img/me', title: 'Bobi and Me'
                         },
                         style: {
-                            backgroundColor: "#00d"
+                            backgroundColor: '#00d'
                         }
                     },
                     {
-                        id: "n103",
-                        type: "note-todos",
+                        id: 'n103',
+                        type: 'note-todos',
                         info: {
-                            label: "Get my stuff together",
+                            label: 'Get my stuff together',
                             todos: [
-                                { txt: "Driving liscence", doneAt: null },
-                                { txt: "Coding power", doneAt: 187111111 }
+                                { txt: 'Driving liscence', doneAt: null },
+                                { txt: 'Coding power', doneAt: 187111111 }
                             ]
                         }
                     }
@@ -61,21 +60,24 @@ function getEmptyNote(notetype) {
 
     if (notetype === 'note-txt') {
         return {
-            type: "note-txt",
+            type: 'note-txt',
             isPinned: false,
             info: {
                 txt: ''
+            },
+            style: {
+                backgroundColor: '#00d'
             }
         }
     } else if (notetype === 'note-img') {
         return {
-            type: "note-img",
+            type: 'note-img',
             info: {
                 url: '',
                 title: 'Title'
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: '#00d'
             }
 
         }
@@ -83,13 +85,13 @@ function getEmptyNote(notetype) {
     else if (notetype === 'note-video')
         return {
 
-            type: "note-video",
+            type: 'note-video',
             info: {
                 url: '',
                 title: 'Title'
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: '#00d'
             }
 
         }
@@ -97,10 +99,13 @@ function getEmptyNote(notetype) {
 
         return {
 
-            type: "note-todos",
+            type: 'note-todos',
             info: {
                 label: 'Todo',
                 todos: []
+            },
+            style: {
+                backgroundColor: '#00d'
             }
         }
     }

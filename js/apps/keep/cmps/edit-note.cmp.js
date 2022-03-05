@@ -38,7 +38,7 @@ export default {
                 this.newInput = info.url
 
             } else if (this.noteToEdit.type === 'note-todos') {
-                (info.todos).map(todo => this.newInput += todo.txt)
+                this.newInput = (info.todos).map(todo => this.newInput += todo.txt)
                 console.log(this.newInput)
             }
         },

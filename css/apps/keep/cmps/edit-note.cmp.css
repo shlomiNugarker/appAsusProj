@@ -2,8 +2,6 @@
 
     width: 31.25rem;
     /* display: none; */
-    display:relative;
-    top:50px
 }
 
 .edit-note > textarea{
