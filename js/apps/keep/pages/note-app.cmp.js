@@ -9,7 +9,7 @@ export default {
 <section class = "main-layout flex">
   <add-note-cmp @add="addNote"/>
   <note-list-cmp :notes="notes" @remove="removeNote"/>
-  <edit-note-cmp class= "edit-note"/>
+  <edit-note-cmp @updatedNote="updateNote" class= "edit-note"/>
 </section>  
     `,
   components: {
@@ -44,6 +44,12 @@ export default {
           eventBus.emit('show-msg', { txt: `could not be  added`, type: 'error' })
         })
 
+    },
+    updateNote(val){
+      var idx = this.notes.findIndex(note => note.id === val.id)
+      this.notes.splice(idx, 1, val)
+      console.log(val);
+      
     },
 
     removeNote(id) {

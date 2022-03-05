@@ -16,7 +16,7 @@ export default {
             <div>
               <img src="./css/apps/mail/icons/logo.png">
             </div>
-            <p class="logo">Gmail</p>
+            <p class="logo">App-sus</p>
           </div>
 
           <div class="compose-container">
