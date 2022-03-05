@@ -1,6 +1,13 @@
 .edit-note{
 
-    width: 500px;
-    height: 500px;
-    background-color: aqua;
+    width: 31.25rem;
+    /* display: none; */
+    display:relative;
+    top:50px
+}
+
+.edit-note > textarea{
+    resize: none;
+    width: 100%;
+    height: 100%;
 }

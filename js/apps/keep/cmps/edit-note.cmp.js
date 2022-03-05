@@ -2,8 +2,8 @@ import { eventBus } from '../../../services/eventBus-service.js'
 import { noteService } from '../services/note.service.js'
 export default {
     template: `
-        <section>
-            <textarea  cols="30" rows="10" v-model="newInput"/>
+        <section v-if="noteToEdit" >
+            <textarea cols="30" rows="10" v-model="newInput"/>
             <button @click="update">Update</button>
         </section>
     `,

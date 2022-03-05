@@ -30,7 +30,7 @@ function query() {
                         id: "n102",
                         type: "note-img",
                         info: {
-                            url: "http://some-img/me",
+                            url: "img/1.jpg",
                             title: "Bobi and Me"
                         },
                         style: {
@@ -111,7 +111,7 @@ function getNote(id) {
 }
 
 function saveNote(note) {
-    // if (note.id) return storageService.put(STORAGE_KEY, note);
+    if (note.id) return storageService.put(STORAGE_KEY, note);
     return storageService.post(STORAGE_KEY, note);
 }
 

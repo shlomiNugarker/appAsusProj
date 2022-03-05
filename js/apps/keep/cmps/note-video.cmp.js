@@ -3,14 +3,11 @@ export default {
     template: `
         <article class="note">
                
-            <video width="400" controls autoplay="false">
-                <source :src="noteInfo.url" type="video/mp4">
-                <source src="noteInfo.url" type="video/ogg">
-                <source src="noteInfo.url"
-                type="video/webm">
+            <iframe width="420" height="345" src="https://www.youtube.com/embed/noteInfo.url">
                 Sorry, your browser doesn't support embedded videos.
-            </video> 
-
+            </iframe>      
+             
+            
      
         </article>
     `,
