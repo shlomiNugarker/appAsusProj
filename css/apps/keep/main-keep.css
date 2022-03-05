@@ -7,4 +7,5 @@
 /* cmps */
 @import './cmps/app-home.css';
 @import'./cmps/note-list.css';
-@import './cmps/note-preview.css';
+@import './cmps/add-note.cmp.css';
+@import './cmps/edit-note.cmp.css';
