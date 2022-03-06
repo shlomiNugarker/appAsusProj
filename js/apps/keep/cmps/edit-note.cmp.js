@@ -2,9 +2,10 @@ import { eventBus } from '../../../services/eventBus-service.js'
 import { noteService } from '../services/note.service.js'
 export default {
     template: `
-        <section v-if="noteToEdit" >
+        <section v-if="newInput" >
             <textarea cols="30" rows="10" v-model="newInput"/>
-            <button @click="update">Update</button>
+            <button @click="update" title="Update">Update</button>
+            <button @click="newInput = null" title="Cancel">Cancel</button>
         </section>
     `,
     components: {},
@@ -39,8 +40,6 @@ export default {
 
             } else if (this.noteToEdit.type === 'note-todos') {
                 var newToDoList = (info.todos).map(todo => todo.txt)
-                // console.log(this.newInput)
-                console.log(newToDoList)
                 this.newInput = newToDoList
             }
         },
@@ -49,7 +48,6 @@ export default {
 
             var noteType = this.noteToEdit.type
             var inputPlace = this.noteToEdit.info
-            console.log(inputPlace);
 
             if (noteType === 'note-txt')
                 inputPlace.txt = this.newInput
@@ -66,9 +64,9 @@ export default {
 
             }
             noteService.saveNote(this.noteToEdit)
-                .then(note => this.$emit('updatedNote', this.noteToEdit))
+                .then(note => this.$emit('updatedNote', { ...this.noteToEdit }))
             this.newInput = null
-            // this.$emit('add', this.newNote);
+
 
         }
     },
