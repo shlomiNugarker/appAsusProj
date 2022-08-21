@@ -1,15 +1,17 @@
-import longText from "../../../cmps/long-text.cmp.js"
-import { mailService } from "../services/mail.service.js"
+import longText from '../../../cmps/long-text.cmp.js'
+import { mailService } from '../services/mail.service.js'
 export default {
-  props: ["mail"],
+  props: ['mail'],
   template: `
   <section class=" row-preview">
-    
-    <span @click="onClickStar" :class="getStar">
+    <div>
+
+      
+      <span @click="onClickStar" :class="getStar">
       <img class="star-icon" v-bind:src="getStar">
     </span>
 
-
+    
       <div  class="link-row"  @click="setReaded(mail)">
         <span class="title">
           <span> {{ mail.subject }} </span>
@@ -21,6 +23,7 @@ export default {
         
         
       </div>
+    </div>
       
       <span>
         {{ getSentTime }}
@@ -61,57 +64,53 @@ export default {
   </section>
     `,
   components: {
-    longText
+    longText,
   },
-  data(){
-    return{
+  data() {
+    return {
       isDetailsClick: false,
       starSrc: {
         notYellow: 'css/apps/mail/icons/star.png',
-        yellow: "./css/apps/mail/icons/star-yellow.png"
-      }
+        yellow: './css/apps/mail/icons/star-yellow.png',
+      },
     }
   },
   methods: {
-    setReaded(mail){
-      if(this.isDetailsClick) return
+    setReaded(mail) {
+      if (this.isDetailsClick) return
       mail.isRead = true
       mailService.save(mail)
 
       this.isDetailsClick = true
-      console.log(this.isDetailsClick);
-
-
-     
+      console.log(this.isDetailsClick)
     },
-    onClickStar(){
+    onClickStar() {
       this.mail.isStared = !this.mail.isStared
       mailService.save(this.mail)
-      console.log(this.mail);
+      console.log(this.mail)
     },
-
-  } , 
+  },
   computed: {
-    getShortTxt(){
-      if(this.mail.body.length < 50) return this.mail.body
+    getShortTxt() {
+      if (this.mail.body.length < 50) return this.mail.body
       return this.mail.body.slice(0, 50) + '...'
     },
-    getSentTime(){
+    getSentTime() {
       var sent = this.mail.sentAt
       var date = new Date(sent).toLocaleDateString()
       return date
-    }, 
-    getStar(){
-      if(this.mail.isStared) return this.starSrc.yellow
-      else if(!this.mail.isStared) return this.starSrc.notYellow
     },
-    getSentTime(){
+    getStar() {
+      if (this.mail.isStared) return this.starSrc.yellow
+      else if (!this.mail.isStared) return this.starSrc.notYellow
+    },
+    getSentTime() {
       var sent = this.mail.sentAt
       var date = new Date(sent).toLocaleDateString()
       return date
-    }, 
-    getFromUserName(){
+    },
+    getFromUserName() {
       return this.mail.to
-    }
-  }
+    },
+  },
 }

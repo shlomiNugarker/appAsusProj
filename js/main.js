@@ -3,25 +3,20 @@ import appHeader from './cmps/app-header.cmp.js'
 import userMsg from './cmps/user-msg.cmp.js'
 import longText from './cmps/long-text.cmp.js'
 
-
-
 const options = {
-    template: `
+  template: `
         <section>
             <app-header/>
             <user-msg />
             <router-view/>
-            <!-- <long-text/> -->
-            <!-- <app-footer/> -->
         </section>
     
     `,
-    components: {
-        appHeader,
-        // appFooter,
-        userMsg,
-        longText
-    }
+  components: {
+    appHeader,
+    userMsg,
+    longText,
+  },
 }
 
 const app = Vue.createApp(options)

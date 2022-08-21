@@ -5,7 +5,7 @@ export default {
             <nav>
                 <ul>
                 <router-link to="/mailBox">mail box</router-link> |
-                <router-link to="/keep">keep</router-link> 
+                <!-- <router-link to="/keep">keep</router-link>  -->
                 </ul>
             </nav>
         </section>

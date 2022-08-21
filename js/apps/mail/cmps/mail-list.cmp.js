@@ -1,10 +1,8 @@
-
 import mailPreview from '../cmps/mail-preview.cmp.js'
 import { mailService } from '../services/mail.service.js'
 
-
 export default {
-  props: ["mails"],
+  props: ['mails'],
   template: `
       <table>
 
@@ -35,24 +33,22 @@ export default {
   },
   data() {
     return {
-      setClass(mail){
+      setClass(mail) {
         return {
-          read:mail.isRead,
-          unread: !mail.isRead
+          read: mail.isRead,
+          unread: !mail.isRead,
         }
       },
     }
   },
   methods: {
-    remove(id){
-      this.$emit('remove', id);
+    remove(id) {
+      this.$emit('remove', id)
     },
   },
   computed: {
-    showMsg(){
-      if(!this.mails.length) return 'No massage here.'
-    }
-    
-  }
-
+    showMsg() {
+      if (!this.mails.length) return 'No massage here.'
+    },
+  },
 }
