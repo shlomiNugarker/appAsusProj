@@ -1,8 +1,8 @@
 export default {
-    props: ['noteInfo'],
+    props: ['note'],
     template: `
         <article class="note note-layout">
-           <img :src="noteInfo.url" alt="img" /> 
+           <img :src="note.info.url" alt="img" /> 
         </article>
     `,
     components: {},

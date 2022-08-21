@@ -1,30 +1,35 @@
 export default {
-    props: ['noteInfo'],
+    props: ['note'],
     template: `
         <article class="note">
-               
-            <iframe width="420" height="345" src="https://www.youtube.com/embed/noteInfo.url">
-                Sorry, your browser doesn't support embedded videos.
-            </iframe>      
-             
-            
-     
+
+            <iframe width="853" height="480" :src="'https://www.youtube.com/embed/'+getVideoId" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
         </article>
     `,
     components: {},
     created() {
-        console.log(this.noteInfo);
+
     },
     mount() {
 
     },
     data() {
-        return {}
+        return {
+            videoId: this.note.info.url
+        }
     },
     methods: {
 
     },
-    computed: {},
+    computed: {
+        getVideoId() {
+
+            var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = this.videoId.match(regExp);
+            return (match && match[2].length == 11) ? match[2] : false;
+        }
+    },
     watch: {},
     unmounted() { },
 }

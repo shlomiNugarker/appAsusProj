@@ -1,8 +1,8 @@
 export default {
-    props: ['noteInfo'],
+    props: ['note'],
     template: `
         <article class="note">
-           <p>{{noteInfo.txt}}</p>
+           <p>{{note.info.txt}}</p>
         </article>
     `,
     components: {},

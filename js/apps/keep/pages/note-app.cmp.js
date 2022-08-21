@@ -8,7 +8,7 @@ export default {
   template: `
 <section class = "main-layout flex">
   <add-note-cmp @add="addNote"/>
-  <note-list-cmp :notes="notes" @remove="removeNote"/>
+  <note-list-cmp :notes="notes" @remove="removeNote" @setVal="setVal"/>
   <edit-note-cmp @updatedNote="updateNote" class= "edit-note"/>
 </section>  
     `,
@@ -45,24 +45,35 @@ export default {
         })
 
     },
-    updateNote(val){
+    updateNote(val) {
       var idx = this.notes.findIndex(note => note.id === val.id)
       this.notes.splice(idx, 1, val)
-      console.log(val);
-      
     },
 
     removeNote(id) {
       noteService.remove(id)
         .then(() => {
           const idx = this.notes.findIndex(note => note.id === id)
-          this.notes.splice(idx, 1);
+          this.notes.splice(idx, 1)
           eventBus.emit('show-msg', { txt: 'removed succesfully', type: 'success' })
         })
         .catch(err => {
           eventBus.emit('show-msg', { txt: `could not be removed`, type: 'error' })
         })
     },
+
+    setVal(noteKey, val, id) {
+      noteService.getNote(id)
+        .then(note => {
+          note[noteKey][val.property] = val.val
+          noteService.saveNote(note)
+            .then(note => {
+              const idx = this.notes.findIndex(note => note.id === id)
+              this.notes.splice(idx, 1, note)
+            })
+        })
+
+    }
 
   },
   computed: {},

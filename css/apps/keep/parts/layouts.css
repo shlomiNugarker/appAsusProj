@@ -9,6 +9,7 @@
     min-height: 0;  
     min-width: 0;
     align-items: center; 
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
     gap: 1.40rem;
@@ -18,13 +19,13 @@
 
 .note-layout{
         
-            display: inline;
-            background-color: white;
-            margin: auto;
-            display: block;
-            min-height: 5%;
-            position: relative;
-            padding: 5px;
+ display: inline;
+ background-color: white;
+ margin: auto;
+ display: block;
+ min-height: 5%;
+ position: relative;
+ padding: 5px;
           
     }
 

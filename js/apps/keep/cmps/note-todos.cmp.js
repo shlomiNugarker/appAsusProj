@@ -1,8 +1,8 @@
 export default {
-    props: ['noteInfo'],
+    props: ['note'],
     template: `
         <article  class="note">
-            <ul v-for = "(info,idx) in noteInfo.todos" >
+            <ul v-for = "(info,idx) in note.info.todos" >
            <li>{{info.txt}} <span v-if="info.doneAt">Done At:{{info.doneAt}}</span>  </li>
            </ul> 
         </article>

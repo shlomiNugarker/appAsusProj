@@ -8,11 +8,12 @@ export default {
     template: `
         <section>
             <ul class="clean-list note-list note-list-layout">
-            <li v-for="(note, idx) in notes" :key="note.id">
-            <component :is="note.type" :noteInfo="note.info"></component>
+            <li v-for="(note, idx) in notes" :key="note.id" :style="note.style">
+            <component :is="note.type" :note="note"></component>
                    <div class="actions">
-                        <button @click = onRemove(note.id)>X</button>
-                        <button @click = onEdit(note.id)>Edit</button>
+                        <button @click = onRemove(note.id) title="Delete">X</button>
+                        <button @click = onEdit(note.id) title="Edit">Edit</button>
+                        <input type="color" @change = "onChangeBcg($event.target.value,note.id)" title="Change backround color" :value="note.style.backgroundColor"/>
                     </div>
                 </li>
             </ul>
@@ -43,6 +44,12 @@ export default {
         onEdit(id) {
             eventBus.emit('edit', { id })
 
+        },
+        onChangeBcg(val, id) {
+            this.$emit('setVal', 'style', {
+                property: 'backgroundColor',
+                val
+            }, id)
         }
     },
     computed: {},
